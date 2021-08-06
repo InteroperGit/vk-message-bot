@@ -1,0 +1,18 @@
+{
+  "name": "vk-message-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "node-telegram-bot-api": "0.54.0",
+    "node-vk-bot-api": "^3.5.0"
+  }
+}
