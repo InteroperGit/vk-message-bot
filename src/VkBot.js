@@ -5,15 +5,21 @@ const vkBot = new VkBot({
     group_id: process.env.VK_GROUP_ID
 });
 
+const handledUsers = [];
+
 vkBot.on((ctx) => {
     try {
+        const { user_id, body } = ctx.message;
+
         if (this.telegramBot) {
-            this.telegramBot.sendMessage('Новое сообщение в группе ВК');
+            this.telegramBot.sendMessage(`Новое сообщение в группе ВК: "${body}"`);
         }
 
-        const REPLY_MESSAGE = `Добрый день.
-			Благодарим за обращение. Наш менеджер свяжется с Вами в самое ближайшее время.`;
-        ctx.reply(REPLY_MESSAGE);
+        if (!handledUsers.some((user) => user === user_id)) {
+            const REPLY_MESSAGE = `Добрый день.\nБлагодарим за обращение. Наш менеджер свяжется с Вами в самое ближайшее время.`;
+            ctx.reply(REPLY_MESSAGE);
+            handledUsers.push(user_id);
+        }
     }
     catch (err) {
         console.log(err);
